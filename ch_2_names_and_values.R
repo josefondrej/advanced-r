@@ -61,6 +61,7 @@ z = f(x) # same business as usual -- copy on modify
 lobstr::obj_addr(z[[2]]) == lobstr::obj_addr(x[[2]])
 
 # Different way to access object
+# ----------------------------------------------------------------------------
 mean
 base::mean
 get("mean")
@@ -68,6 +69,7 @@ evalq(mean)
 match.fun("mean")
 
 # Object size
+# ----------------------------------------------------------------------------
 x = c(1L, 2L, 3L)
 x = 1L
 lobstr::obj_size(x)

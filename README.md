@@ -94,16 +94,16 @@ code refactoring and overall user-friendliness are nowhere near the JetBrains pr
   calls `function.myclass` which is done by `base::UseMethod`
 - **S3 generic**: `my_new_generic <- function(x) {UseMethod("my_new_generic")}`
 
-> method must have same arguments as it's generic
+  > method must have same arguments as it's generic
 
 - **S3 inheritance**:
     - `class(object)` can be `c("first class", "second class" ...)`
     - `base::NextMethod`
 
-> base type of subclass = type of superclass
->
-> attributes of subclass = superset of superclass
->
+  > base type of subclass = type of superclass
+  >
+  > attributes of subclass = superset of superclass
+
 
 - **S3 subclassable constructor**:
   ```

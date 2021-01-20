@@ -9,7 +9,7 @@ str(time)
 
 str(unclass(time))
 
-s3_dispatch(str(time))
+sloop::s3_dispatch(str(time))
 
 # Methods have dot in name or use ftype to check
 sloop::ftype(strptime)
@@ -47,11 +47,13 @@ print.myclass = function(x) {
   print(paste0("[MyClass] ", x))
 }
 
+print(myclass(5))
+
 print_generics_methods = s3_methods_generic("print") # there should be row print.myclass somewhere
 
 # if we want to define own generic
 my_new_generic <- function(x) {
-  UseMethod("my_new_generic") # -- this basically just finds function called my_new_generic.class
+  base::UseMethod("my_new_generic") # -- this basically just finds function called my_new_generic.class
 }
 
 # find out if function is generic

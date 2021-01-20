@@ -81,3 +81,31 @@ code refactoring and overall user-friendliness are nowhere near the JetBrains pr
 11.
 
 - purrr::safely/memoise
+
+12.
+
+- objects = base objects + oo objects (base::is.object / attr(object, "class") == NULL)
+- sloop::s3_class(object) -- used by S3,S4 to pick methods
+
+13. (🤮)
+
+- sloop::s3_dispatch(generic_function(object))
+- S3 object definition: new_myclass(args) + validate_myclass(object:myclass) + myclass(args){helpers + return
+  new_myclass(x)}
+- S3 object method definition: function.myclass(), calling function(object:myclass) then calls function.myclass - base::
+  UseMethod
+
+- method must have same arguments as it's generic
+- S3 generic: my_new_generic <- function(x) {UseMethod("my_new_generic")}
+- inheritance:
+    - class(object) can be c("first class", "second class" ...)
+    - base::NextMethod
+
+- base type of subclass = type of superclass, attributes of subclass = superset of superclass
+- S3 subclassable constructor: new_subclassable_my_class <- function(x, ..., class = character()) {return(structure(x,
+  ..., class=c(class, "subclassable_my_class")))}
+
+- S3 classmethod: vctrs::vec_restore
+
+
+

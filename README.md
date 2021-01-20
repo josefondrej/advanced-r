@@ -32,28 +32,28 @@ code refactoring and overall user-friendliness are nowhere near the JetBrains pr
 
 # Keywords
 
-2.
+2. Names & Values
 
 - copy on modify (objects are immutable - exceptions)
 - pass by value
 - lobstr::obj_addr(z)
 
-3.
+3. Vectors
 
 - logical, integer, double, string
 - list = atomic(reference)
 - attr(object, "key") = "value", attributes(object),
 - data.frame = named list of vectors
 
-4.
-5.
-6.
+4. Subsetting
+5. Control Flow
+6. Functions
 
 - f = (base::formals(f), base::body(f), base::environment(f) = evaluation env)
 - lazy argument evaluation
 - base::stop("error"), base::on.exit()
 
-7.
+7. Environments
 
 - environment = rlang::env(a = 1, b = 2)
 - global_env() -> env(package_1) -> ... -> env(package_n) -> rlang::base_env() -> rlang::empty_env()
@@ -63,31 +63,29 @@ code refactoring and overall user-friendliness are nowhere near the JetBrains pr
 - (namespace and import environment)
 - rlang::caller_env
 
-8.
+8. TryCatch
 
 - tryCatch(error = function(cnd) {}, code)
 
-9.
+9. Functionals
 
 - purrr::map(1:10, function, arg_1 = "fixed_value")
 - purrr style: base::split(mtcars, mtcars$cyl) %>% map(func_1) %>% ... etc. (split = pandas.groupby)
 - purrr::reduce, accumulate
 
-10.
+10. Function Factories
 
 - use base::force(arguments) in fn factories (to avoid hell caused by lazy eval)
 - the created fn keeps track of it's environment -- gc() won't collect any garbage you leave there
 
-11.
+11. Function Operators
 
-- purrr::safely/memoise
-
-12.
+12. Base vs OO Objects
 
 - objects = base objects + oo objects (base::is.object / attr(object, "class") == NULL)
 - sloop::s3_class(object) -- used by S3,S4 to pick methods
 
-13. (🤮)
+13. S3(🤮)
 
 - sloop::s3_dispatch(generic_function(object))
 - S3 object definition: new_myclass(args) + validate_myclass(object:myclass) + myclass(args){helpers + return

@@ -8,9 +8,10 @@ f = function(x) {
   return(x^2)
 }
 
-formals(f)
-body(f)
-environment(f)
+# function has aguments, body and environment
+base::formals(f)
+base::body(f)
+base::environment(f) # -- how the function finds the values associated with the names
 
 # For builtin functions formals, body and environmet does not work
 typeof(sum)
@@ -21,7 +22,7 @@ formals(sum)
 function(x) { return(x * x) }
 
 args = list(1:10, na.rm = TRUE)
-do.call(sum, args)
+base::do.call(sum, args)
 
 # Composition
 g = function(x) { return(x + 1) }
@@ -50,8 +51,10 @@ codetools::findGlobals(foo) # can help find global vars function uses
 # Lazy evaluation
 # ----------------------------------------------------------------------------
 h = function(x) { return(4) }
-h(stop("ERROR")) # x is not evaluated because it is not used
+h(base::stop("ERROR")) # x is not evaluated because it is not used
 # it is powered by promises = (expression = x+y, environment, value - calculated when 1st evaluated)
+h = function(x) { return(x) } # -- here it is evaluated so it will fail
+h(base::stop("ERROR"))
 
 # Thanks to lazy evaluation, default values can be defined in terms of other arguments, or even in terms of variables
 # defined later in the function -- OH LORD ...
@@ -91,6 +94,8 @@ j06 <- function(x) {
     stop("Error")
   }
 }
+
+j06(x = 5)
 
 # Prefix, infix, replacement, special
 2 + 3 == `+`(2, 3)

@@ -28,4 +28,56 @@ I tried the R support only for couple of weeks in PyCharm and while there are st
 it works pretty well and together with the other features the IDE offers makes it a clear choice for me.
 
 You might also want to check out [RStudio](https://rstudio.com/), which has more R focused features, but the tools for
-code refactoring and overall user-friendliness are nowhere near the JetBrains products. 
+code refactoring and overall user-friendliness are nowhere near the JetBrains products.
+
+# Keywords
+
+2.
+
+- copy on modify (objects are immutable - exceptions)
+- pass by value
+- lobstr::obj_addr(z)
+
+3.
+
+- logical, integer, double, string
+- list = atomic(reference)
+- attr(object, "key") = "value", attributes(object),
+- data.frame = named list of vectors
+
+4.
+5.
+6.
+
+- f = (base::formals(f), base::body(f), base::environment(f) = evaluation env)
+- lazy argument evaluation
+- base::stop("error"), base::on.exit()
+
+7.
+
+- environment = rlang::env(a = 1, b = 2)
+- global_env() -> env(package_1) -> ... -> env(package_n) -> rlang::base_env() -> rlang::empty_env()
+- <<-
+- function captures/binds environment (=looks for the variables in it) in which it is DEFINED (closure)
+- execution environment
+- (namespace and import environment)
+- rlang::caller_env
+
+8.
+
+- tryCatch(error = function(cnd) {}, code)
+
+9.
+
+- purrr::map(1:10, function, arg_1 = "fixed_value")
+- purrr style: base::split(mtcars, mtcars$cyl) %>% map(func_1) %>% ... etc. (split = pandas.groupby)
+- purrr::reduce, accumulate
+
+10.
+
+- use base::force(arguments) in fn factories (to avoid hell caused by lazy eval)
+- the created fn keeps track of it's environment -- gc() won't collect any garbage you leave there
+
+11.
+
+- purrr::safely/memoise

@@ -21,7 +21,7 @@ foo = function(a, b) {
 purrr::map(1:10, foo, b = 3)
 
 # Purr style
-by_cyl = split(mtcars, mtcars$cyl)
+by_cyl = base::split(mtcars, mtcars$cyl)
 by_cyl %>%
   map(~lm(mpg ~ wt, data = .x)) %>%
   map(coef) %>%

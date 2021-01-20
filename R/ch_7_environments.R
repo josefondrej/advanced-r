@@ -20,6 +20,7 @@ while (TRUE) {
 search_envs()
 # Autoload and base are always present
 rlang::base_env()
+rlang::empty_env()
 
 # <<- modifies existing variable in parent env or creates new one in global env
 
@@ -31,7 +32,8 @@ rlang::base_env()
 e <- env()
 e$g <- function(x) { return(x + 1) }
 
-fn_env(e$g)
+rlang::fn_env(e$g)
+environment(e$g)
 
 # environemnt e binds name f to the function but the function binds the global environment (it looks for its
 # variables in it)

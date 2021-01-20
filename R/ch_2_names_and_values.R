@@ -46,7 +46,7 @@ lobstr::obj_addr(x) != lobstr::obj_addr(y)
 
 vec = c("a", "a", "abc", "d")
 lobstr::obj_addr(vec[[1]]) != lobstr::obj_addr(vec[[2]])
-ref(vec, character = TRUE)
+lobstr::ref(vec, character = TRUE)
 
 # Function calls
 x = list(1, 2, 3, 4)
@@ -58,6 +58,7 @@ f = function(y) {
 
 z = f(x) # same business as usual -- copy on modify
 
+lobstr::obj_addr(z) != lobstr::obj_addr(x)
 lobstr::obj_addr(z[[2]]) == lobstr::obj_addr(x[[2]])
 
 # Different way to access object

@@ -3,7 +3,7 @@
 # Created on: 26.12.20
 
 x = TRUE
-y = if (x) 3
+y = if (x) { 3 } # if returns!
 y == 3
 
 x = 1:10
@@ -18,6 +18,8 @@ foo = dplyr::case_when(
   is.na(x) ~ "???",
   TRUE ~ as.character(x)
 )
+
+foo
 
 # Switch
 switch()

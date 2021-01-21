@@ -122,11 +122,9 @@ MyClass <- R6::R6Class(
   inherit = SuperClass,
   public = list(
     field = 123,
-
-    function = function(x) {
-      super$function(x = (x + 1))
+    func = function(x) {
+      super$func(x = (x + 1))
     }
-
   ),
   private = list(
     .field = 234
@@ -135,8 +133,10 @@ MyClass <- R6::R6Class(
 
 myclass = MyClass$new()
 myclass$field
-myclass$function()
+myclass$func()
 ```
 
 **15. S4**
+
+TODO: Finish writing summary
 

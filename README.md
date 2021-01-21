@@ -114,5 +114,29 @@ code refactoring and overall user-friendliness are nowhere near the JetBrains pr
 
 - **S3 classmethod** - use `vctrs::vec_restore`
 
+**14. R6**
 
+```r
+MyClass <- R6::R6Class(
+  classname = "MyClass",
+  inherit = SuperClass,
+  public = list(
+    field = 123,
+
+    function = function(x) {
+      super$function(x = (x + 1))
+    }
+
+  ),
+  private = list(
+    .field = 234
+  )
+)
+
+myclass = MyClass$new()
+myclass$field
+myclass$function()
+```
+
+**15. S4**
 

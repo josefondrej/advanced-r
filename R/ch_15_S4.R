@@ -4,7 +4,7 @@
 
 library(methods)
 
-setClass(
+methods::setClass(
   Class = "Person",
   slots = c(
     name = "character",
